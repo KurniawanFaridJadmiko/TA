@@ -44,13 +44,13 @@ jobs:
             docker run --rm -v $(pwd):/workdir aquasec/trivy:latest fs /workdir
 
       - name: Build Image
-        run: docker build -t ghcr.io/kurniawanfaridjadmiko/tugas_akhir:${{ github.run_number }} .
+        run: docker build -t ghcr.io/kurniawanfaridjadmiko/ta:${{ github.run_number }} .
 
       - name: Log in GHCR
         run: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.TOKEN }}
 
       - name: Push to GHCR
-        run: docker push ghcr.io/kurniawanfaridjadmiko/tugas_akhir:${{ github.run_number }}
+        run: docker push ghcr.io/kurniawanfaridjadmiko/ta:${{ github.run_number }}
         
   pull:
     needs: checkandbuild
@@ -61,4 +61,4 @@ jobs:
         uses: actions/checkout@v2
     
       - name: Pull
-        run: docker pull ghcr.io/kurniawanfaridjadmiko/tugas_akhir:${{ github.run_number }}
+        run: docker pull ghcr.io/kurniawanfaridjadmiko/ta:${{ github.run_number }}
