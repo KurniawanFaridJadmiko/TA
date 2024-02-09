@@ -51,7 +51,7 @@ jobs:
 
       - name: Push to GHCR
         run: docker push ghcr.io/kurniawanfaridjadmiko/tugas_akhir:${{ github.run_number }}
-
+        
   pull:
     needs: checkandbuild
     runs-on: self-hosted
